@@ -9,7 +9,7 @@ public interface AccountPort {
   Account getAccountById(String accountIdentifier);
 }
 
-public class IndividualAccountPort : AccountPort {
+public class IndividualAccountPort implements AccountPort {
 
   //Ignore the class name, it's just for the sake of presentation
   @Autowired
@@ -22,7 +22,7 @@ public class IndividualAccountPort : AccountPort {
   }
 }
 
-public class BusinessAccountPort : AccountPort {
+public class BusinessAccountPort implements AccountPort {
 
   //Ignore the class name, it's just for the sake of presentation
   @Autowired
