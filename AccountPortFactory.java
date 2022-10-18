@@ -4,7 +4,7 @@ public class AccountPortsFactory {
 
   DataAccessLayer accountAccess;
 
-  public AccountPort createAccountPort(String accountIdentifier) {
+  public AccountPort createPort(String accountIdentifier) {
 	
 	if (accountIdentifier.startsWith("BA")) {
 	  return new BusinessAccountPort();
