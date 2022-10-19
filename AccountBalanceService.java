@@ -74,6 +74,6 @@ public class AccountBalanceService {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-    return new BalanceFormatter.formatBalance(account, balance);
+    return new BalanceFormatter().formatBalance(account, balance);
   }
 }
