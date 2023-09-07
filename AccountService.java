@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class AccountService {
 
   @Autowired
-  AccountPortFactory portFactory;
+  AccountHandlerFactory handlerFactory;
 
   public Account findAccountById(String accountIdentifier) {
-	 return portFactory
-				.createPort(accountIdentifier)
+	 return handlerFactory
+				.createHandler(accountIdentifier)
 				.getAccountById(accountIdentifier);
   }
 }
