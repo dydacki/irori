@@ -8,10 +8,9 @@ public class BalanceFormatter {
 
   @Autowired
   private ConverterService converterService;
-  
   private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
-  public Balance formatBalance(Account account, Double balance) {
+  public Balance formatAccountBalance(Account account) {
   
 	double currentBalanceInSek = account.getCurrentBalanceInSek();
     Double balance = converterService.convertToCurrency(account.getCurrentBalanceInSek(), currency);
