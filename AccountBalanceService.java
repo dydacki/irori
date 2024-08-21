@@ -52,15 +52,10 @@ public class AccountBalanceService {
       @PathParam("selectedCurrency") String selectedCurrency) {
 
   Currency currency;
+  Account account; 
+
   try {
     currency = Currency.valueOf(selectedCurrency);
-  } catch (IllegalArgumentException e) {
-    e.printStackTrace();
-    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-  }
-
-	Account account; 
-	try {
     account = accountService.findAccountById(accountIdentifier);
   } catch (IllegalArgumentException e) {
     e.printStackTrace();
