@@ -34,9 +34,6 @@ public class AccountBalanceService {
   @Autowired
   AccountService accountService;
 
-  @Autowired
-  private ConverterService converterService;
-
   /**
    * Returns the balance of the customer's account in the given currency.
    *
@@ -54,26 +51,26 @@ public class AccountBalanceService {
       @PathParam("accountIdentifier") String accountIdentifier,
       @PathParam("selectedCurrency") String selectedCurrency) {
 
-    Currency currency;
-    try {
-      currency = Currency.valueOf(selectedCurrency);
-    } catch (IllegalArgumentException e) {
-      e.printStackTrace();
-      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
+  Currency currency;
+  try {
+    currency = Currency.valueOf(selectedCurrency);
+  } catch (IllegalArgumentException e) {
+    e.printStackTrace();
+    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+  }
 
 	Account account; 
 	try {
-      account = accountService.findAccountById(accountIdentifier);
-    } catch (IllegalArgumentException e) {
-      e.printStackTrace();
-      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
+    account = accountService.findAccountById(accountIdentifier);
+  } catch (IllegalArgumentException e) {
+    e.printStackTrace();
+    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+  }
 	
 	if (account == null) {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-    return new BalanceFormatter().formatAccountBalance(account);
+    return new BalanceFormatter().formatAccountBalance(account, currency);
   }
 }
